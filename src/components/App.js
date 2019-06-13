@@ -57,6 +57,24 @@ export default class App extends Component {
               />
             )}
           />
+          <Route
+            path="/computers"
+            render={() => (
+              <Gallery
+                onClick={this.performSearch("computers")}
+                data={this.state.photos}
+              />
+            )}
+          />
+          <Route
+            path="/buildings"
+            render={() => (
+              <Gallery
+                onClick={this.performSearch("buildings")}
+                data={this.state.photos}
+              />
+            )}
+          />
           <Route component={NotFound} />
         </div>
       </BrowserRouter>
