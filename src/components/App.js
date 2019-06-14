@@ -4,7 +4,6 @@ import axios from "axios";
 import API_KEY from "../config";
 import Header from "./Header";
 import Gallery from "./Gallery";
-import Nav from "./Nav";
 import NotFound from "./NotFound";
 
 export default class App extends Component {
@@ -37,45 +36,57 @@ export default class App extends Component {
     console.log(this.state.photos);
     return (
       <BrowserRouter>
-        <div>
-          <Header onSearch={this.performSearch} />
+        <div className="container">
+          <Header
+            onSearch={this.performSearch}
+            onClick={this.performSearch}
+            value={this.props.value}
+          />
           {this.state.loading ? (
-            <p>loading...</p>
+            <p>Loading....</p>
           ) : (
-            <Route
-              exact
-              path="/"
-              render={() => <Gallery data={this.state.photos} />}
-            />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <Gallery data={this.state.photos} />}
+              />
+
+              <Route
+                path="/search"
+                render={() => <Gallery data={this.state.photos} />}
+              />
+
+              <Route
+                path="/tigers"
+                render={() => (
+                  <Gallery
+                    onClick={this.performSearch("tigers")}
+                    data={this.state.photos}
+                  />
+                )}
+              />
+              <Route
+                path="/computers"
+                render={() => (
+                  <Gallery
+                    onClick={this.performSearch("computers")}
+                    data={this.state.photos}
+                  />
+                )}
+              />
+              <Route
+                path="/buildings"
+                render={() => (
+                  <Gallery
+                    onClick={this.performSearch("buildings")}
+                    data={this.state.photos}
+                  />
+                )}
+              />
+              <Route component={NotFound} />
+            </Switch>
           )}
-          <Route
-            path="/tigers"
-            render={() => (
-              <Gallery
-                onClick={this.performSearch("tigers")}
-                data={this.state.photos}
-              />
-            )}
-          />
-          <Route
-            path="/computers"
-            render={() => (
-              <Gallery
-                onClick={this.performSearch("computers")}
-                data={this.state.photos}
-              />
-            )}
-          />
-          <Route
-            path="/buildings"
-            render={() => (
-              <Gallery
-                onClick={this.performSearch("buildings")}
-                data={this.state.photos}
-              />
-            )}
-          />
-          <Route component={NotFound} />
         </div>
       </BrowserRouter>
     );

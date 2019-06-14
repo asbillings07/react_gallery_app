@@ -2,13 +2,13 @@ import React from "react";
 import Nav from "./Nav";
 import SearchForm from "./SearchForm";
 
-const Header = ({ onSearch }) => {
+const Header = ({ onClick, onSearch, data }) => {
   return (
-    <div className="container">
-      <title>React App Assets</title>,
-      <SearchForm onSearch={onSearch} />
-      <Nav />
-    </div>
+    <React.Fragment>
+      <h1>React Gallery App</h1>
+      <SearchForm onSearch={onSearch} data={data} />
+      <Nav onClick={onClick} data={data} />
+    </React.Fragment>
   );
 };
 
