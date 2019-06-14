@@ -6,7 +6,6 @@ import API_KEY from "../config";
 import Header from "./Header";
 import Gallery from "./Gallery";
 import NoResults from "./NoResults";
-import NotFound from "./NotFound";
 
 export default class App extends Component {
   constructor() {
@@ -84,7 +83,6 @@ export default class App extends Component {
                 )}
               />
               <Route component={NoResults} />
-              <Route component={NotFound} />
             </Switch>
           )}
         </div>
