@@ -1,6 +1,6 @@
 import React from "react";
 import GalleryItem from "./GalleryItem";
-import NotFound from "./NotFound";
+import NoResults from "./NoResults";
 
 const Gallery = ({ data }) => {
   let photos;
@@ -15,7 +15,7 @@ const Gallery = ({ data }) => {
       />
     ));
   } else {
-    photos = <NotFound />;
+    photos = <NoResults />;
   }
 
   return (

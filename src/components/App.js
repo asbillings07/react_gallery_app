@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import API_KEY from "../config";
+// app components
 import Header from "./Header";
 import Gallery from "./Gallery";
+import NoResults from "./NoResults";
 import NotFound from "./NotFound";
 
 export default class App extends Component {
@@ -14,12 +16,12 @@ export default class App extends Component {
       loading: true
     };
   }
-
+  // happens as soon as render happens
   componentDidMount() {
     this.performSearch();
   }
-
-  performSearch = query => {
+  // search function
+  performSearch = (query = "cars") => {
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&tags=${query}&per_page=20&format=json&nojsoncallback=1`
@@ -37,11 +39,8 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <Header
-            onSearch={this.performSearch}
-            onClick={this.performSearch}
-            value={this.props.value}
-          />
+          <Header onSearch={this.performSearch} data={this.state.photos} />
+          {/* If statement that shows loading until a page is loaded */}
           {this.state.loading ? (
             <p>Loading....</p>
           ) : (
@@ -84,6 +83,7 @@ export default class App extends Component {
                   />
                 )}
               />
+              <Route component={NoResults} />
               <Route component={NotFound} />
             </Switch>
           )}
