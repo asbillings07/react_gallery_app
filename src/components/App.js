@@ -39,7 +39,7 @@ export default class App extends Component {
   shouldUpdateText = query => {
     console.log(query);
     this.setState({ text: query });
-    this.performSearch();
+    this.performSearch(query);
   };
 
   render() {
@@ -66,7 +66,6 @@ export default class App extends Component {
                 render={() => <Gallery data={this.state.photos} />}
               />
               <Route
-                exact
                 path="/tigers"
                 render={() => <Gallery data={this.state.photos} />}
               />
