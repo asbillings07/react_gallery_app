@@ -2,12 +2,12 @@ import React from "react";
 import Nav from "./Nav";
 import SearchForm from "./SearchForm";
 
-const Header = ({ onSearch, data }) => {
+const Header = ({ performSearch, data, gimmeTheText }) => {
   return (
     <React.Fragment>
       <h1>React Gallery App</h1>
-      <SearchForm onSearch={onSearch} data={data} />
-      <Nav data={data} />
+      <SearchForm onSearch={performSearch} data={data} />
+      <Nav thatTextTho={gimmeTheText} search={performSearch} data={data} />
     </React.Fragment>
   );
 };
