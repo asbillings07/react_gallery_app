@@ -1,30 +1,30 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Nav = ({ thatTextTho }) => (
+const Nav = ({ getThatText }) => (
   <nav className="main-nav">
     <ul>
       <li>
         <NavLink
-          onClick={() => thatTextTho("tigers")}
+          onClick={() => getThatText("trains")}
           activeStyle={{ backgroundColor: "tomato" }}
-          to="/tigers"
+          to="/trains"
         >
-          Tigers
+          Trains
         </NavLink>
       </li>
       <li>
         <NavLink
-          onClick={() => thatTextTho("javascript")}
+          onClick={() => getThatText("people")}
           activeStyle={{ backgroundColor: "green" }}
-          to="/javascript"
+          to="/people"
         >
-          JavaScript
+          People
         </NavLink>
       </li>
       <li>
-        <NavLink onClick={() => thatTextTho("buildings")} to="/buildings">
-          Buildings
+        <NavLink onClick={() => getThatText("planes")} to="/planes">
+          Planes
         </NavLink>
       </li>
     </ul>

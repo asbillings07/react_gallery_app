@@ -5,7 +5,6 @@ import API_KEY from "../config";
 // app components
 import Header from "./Header";
 import Gallery from "./Gallery";
-
 import NoResults from "./NoResults";
 
 export default class App extends Component {
@@ -30,14 +29,12 @@ export default class App extends Component {
       )
       .then(response => {
         this.setState({ photos: response.data.photos.photo, loading: false });
-        console.log(response.data.photos.photo.length);
       })
       .catch(error => {
         console.log("Error fetching and parsing data", error);
       });
   };
   shouldUpdateText = query => {
-    console.log(query);
     this.setState({ text: query });
     this.performSearch(query);
   };
@@ -48,12 +45,12 @@ export default class App extends Component {
         <div className="container">
           <Header
             performSearch={this.performSearch}
-            gimmeTheText={this.shouldUpdateText}
+            updateText={this.shouldUpdateText}
             data={this.state.photos}
           />
           {/* If statement that shows loading until a page is loaded */}
           {this.state.loading ? (
-            <p>Loading....</p>
+            <h2>Loading....</h2>
           ) : (
             <Switch>
               <Route
@@ -66,18 +63,19 @@ export default class App extends Component {
                 render={() => <Gallery data={this.state.photos} />}
               />
               <Route
-                path="/tigers"
+                path="/trains"
                 render={() => <Gallery data={this.state.photos} />}
               />
               <Route
-                path="/javascript"
+                path="/people"
                 render={() => <Gallery data={this.state.photos} />}
               />
               <Route
-                path="/buildings"
+                path="/planes"
                 render={() => <Gallery data={this.state.photos} />}
               />
-              <Route component={NoResults} />
+
+              <Route render={() => <NoResults query={this.state.text} />} />
             </Switch>
           )}
         </div>
