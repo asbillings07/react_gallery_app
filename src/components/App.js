@@ -21,7 +21,7 @@ export default class App extends Component {
     this.shouldUpdateText();
   }
 
-  // search function
+  // API Request and Parse Function
   performSearch = (search = this.state.text) => {
     console.log(this.search);
     axios
@@ -35,6 +35,7 @@ export default class App extends Component {
         console.log("Error fetching and parsing data", error);
       });
   };
+  // update text in nav to show photos in links
   shouldUpdateText = query => {
     this.setState({ text: query });
     this.performSearch(query);
@@ -62,7 +63,7 @@ export default class App extends Component {
               <Route
                 path="/search"
                 render={() => (
-                  <Gallery data={this.state.photos} text={this.state.text}/>
+                  <Gallery data={this.state.photos} text={this.state.text} />
                 )}
               />
               <Route
