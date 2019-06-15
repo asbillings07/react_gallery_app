@@ -8,7 +8,6 @@ const NoResults = () => {
         You search did not return any results, or you reached a page that does
         not exist. Please try again.
       </p>
-      <img src="../images/404-error.png" alt="error status page" />
     </li>
   );
 };
