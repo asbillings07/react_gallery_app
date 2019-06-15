@@ -23,6 +23,7 @@ export default class App extends Component {
 
   // API Request and Parse Function
   performSearch = (search = this.state.text) => {
+    this.setState({ loading: true });
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&tags=${search}&per_page=24&format=json&nojsoncallback=1`
