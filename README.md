@@ -1,3 +1,23 @@
+#React_Gallery_App
+
+## About this project
+
+This project allows users to search for their favorite pictures via the Flickr API. It includes three premade link choices for them to see the different pictures that come up.
+
+If no results are found, the user will be meet with a `No Results Found` page that will tell them to search again.
+
+If the user happens to stumble on to a page that does not exist, they will see a `404 - Not Found` page that tells them the page does not exist and to press one of the button links above to navigate back to safety.
+
+## Motivation and Changes to this project
+
+This project was created as a part of a Techdegree program at TreeHouse.
+
+`Changes Made`:
+
+- CSS styles were changed to give effects to button links
+- Background color was changed to give a more personal feel
+- Boarder shadow was added to give the appearance of floating icons
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
