@@ -2,7 +2,7 @@ import React from "react";
 import GalleryItem from "./GalleryItem";
 import NoResults from "./NoResults";
 
-const Gallery = ({ data }) => {
+const Gallery = ({ data, text }) => {
   let photos;
 
   if (data.length > 0) {
@@ -20,7 +20,7 @@ const Gallery = ({ data }) => {
 
   return (
     <div className="photo-container">
-      <h2>Results</h2>
+      <h3>Search Results</h3>
       <ul>{photos}</ul>
     </div>
   );

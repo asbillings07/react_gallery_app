@@ -23,6 +23,7 @@ export default class App extends Component {
 
   // search function
   performSearch = (search = this.state.text) => {
+    console.log(this.search);
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&tags=${search}&per_page=24&format=json&nojsoncallback=1`
@@ -60,22 +61,30 @@ export default class App extends Component {
               />
               <Route
                 path="/search"
-                render={() => <Gallery data={this.state.photos} />}
+                render={() => (
+                  <Gallery data={this.state.photos} text={this.state.text}/>
+                )}
               />
               <Route
                 path="/trains"
-                render={() => <Gallery data={this.state.photos} />}
+                render={() => (
+                  <Gallery data={this.state.photos} text={this.state.text} />
+                )}
               />
               <Route
                 path="/people"
-                render={() => <Gallery data={this.state.photos} />}
+                render={() => (
+                  <Gallery data={this.state.photos} text={this.state.text} />
+                )}
               />
               <Route
                 path="/planes"
-                render={() => <Gallery data={this.state.photos} />}
+                render={() => (
+                  <Gallery data={this.state.photos} text={this.state.text} />
+                )}
               />
 
-              <Route render={() => <NoResults query={this.state.text} />} />
+              <Route component={NoResults} />
             </Switch>
           )}
         </div>
