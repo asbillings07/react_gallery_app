@@ -5,7 +5,7 @@ import API_KEY from "../config";
 // app components
 import Header from "./Header";
 import Gallery from "./Gallery";
-import NoResults from "./NoResults";
+import NotFound from "./NotFound";
 
 export default class App extends Component {
   constructor() {
@@ -23,7 +23,6 @@ export default class App extends Component {
 
   // API Request and Parse Function
   performSearch = (search = this.state.text) => {
-    console.log(this.search);
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&tags=${search}&per_page=24&format=json&nojsoncallback=1`
@@ -51,6 +50,7 @@ export default class App extends Component {
             data={this.state.photos}
           />
           {/* If statement that shows loading until a page is loaded */}
+
           {this.state.loading ? (
             <h2>Loading....</h2>
           ) : (
@@ -60,12 +60,14 @@ export default class App extends Component {
                 path="/"
                 render={() => <Gallery data={this.state.photos} />}
               />
+
               <Route
                 path="/search"
                 render={() => (
                   <Gallery data={this.state.photos} text={this.state.text} />
                 )}
               />
+
               <Route
                 path="/trains"
                 render={() => (
@@ -84,8 +86,7 @@ export default class App extends Component {
                   <Gallery data={this.state.photos} text={this.state.text} />
                 )}
               />
-
-              <Route component={NoResults} />
+              <Route component={NotFound} />
             </Switch>
           )}
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import NoResults from "./NoResults";
 class SearchForm extends Component {
   state = {
     searchText: ""
@@ -12,9 +13,14 @@ class SearchForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let search = this.search.value;
-    this.props.onSearch(search);
-    const path = `/search/${search}`;
-    this.props.history.push(path);
+    if (this.props.data.length > 0) {
+      this.props.onSearch(search);
+      const path = `/search/${search}`;
+      this.props.history.push(path);
+    } else {
+      return <NoResults />;
+    }
+
     e.currentTarget.reset();
   };
   render() {
