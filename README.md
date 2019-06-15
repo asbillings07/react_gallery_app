@@ -1,4 +1,4 @@
-#React_Gallery_App
+### React_Gallery_App
 
 ## About this project
 
