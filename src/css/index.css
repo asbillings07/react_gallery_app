@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: aliceblue;
 }
 
@@ -77,8 +77,8 @@ input {
 }
 
 .photo-container ul li {
-  width: 220px;
-  height: 165px;
+  max-width: 220px;
+  max-height: 150px;
   overflow: hidden;
   margin-bottom: 15px;
 }
